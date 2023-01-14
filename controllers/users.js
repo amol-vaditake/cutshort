@@ -47,7 +47,6 @@ module.exports = {
       else user = oldUser;
       // here user will also saved
       const accessToken = await user.generateToken();
-      console.log(accessToken);
       res.status(200).json({
         accessToken: `JWT ${accessToken}`,
         massage: 'done',

@@ -6,7 +6,7 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
-  comment: {
+  title: {
     type: String,
     required: true,
   },

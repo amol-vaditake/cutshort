@@ -32,16 +32,15 @@ const userSchema = new Schema(
   {
     methods: {
       async generateToken() {
-        console.log('generating token');
         const user = this;
         // eslint-disable-next-line global-require
         const jwt = require('jsonwebtoken');
 
         try {
-          const decodedToken = user.accessToken
+          const decodedUserFromToken = user.accessToken
             ? jwt.verify(user.accessToken, process.env.JWT_SECRET_KEY)
             : null;
-          if (decodedToken) return user.accessToken;
+          if (decodedUserFromToken) return user.accessToken;
         } catch (err) {
           // token expired, moving next to create new
           console.log(err);
