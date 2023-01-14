@@ -1,21 +1,24 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-dotenv.config();
-require("./db");
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
+dotenv.config();
+require('./db');
 
 const app = express();
-app.use(express.json());
+
+// Bodyparser middleware
 app.use(
-  cors({
-    origin: "http://localhost:1234",
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
+  bodyParser.urlencoded({
+    extended: true,
   })
 );
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(cors());
 
+const userRoutes = require('./routes/users');
 
+app.use('/api/users', userRoutes);
 
 module.exports = app;
