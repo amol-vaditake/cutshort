@@ -28,4 +28,10 @@ app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/roles', roleRoutes);
 
+app.get('/', async (req, res) => {
+  res.json({
+    message: 'pass!',
+  });
+});
+
 module.exports = app;
